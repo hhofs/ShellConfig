@@ -15,7 +15,7 @@ Foreach ($Version in $(gci "$(Split-Path $PROFILE -parent)\Modules\oh-my-posh"))
 }
 Copy-Item $PSScriptRoot\Powershell\Microsoft.PowerShell_profile.ps1 -Destination $PROFILE
 $terminalFolder =  Get-Item "$env:LocalAppData\Packages\Microsoft.WindowsTerminal*"
-$settingsJson = Get-Content "$terminalFolder\LocalState\settings.json" | ConvertFrom-Json -Depth 99
+$settingsJson = Get-Content "$terminalFolder\LocalState\settings.json" | ConvertFrom-Json
 
 # Add the colorScheme
 $schemesArray = @()
