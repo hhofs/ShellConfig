@@ -17,19 +17,27 @@ Set-Alias -Name VSIE -Value "C:\Users\markp\OneDrive\LoginVSI\ScriptEditor\Scrip
 $dets = @"
 
 +=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+
-|     _   _            _                                           |
-|    | | | |          | |                                          |
-|    | |_| | __ _  ___| | _____ _ __ _ __ ___   __ _ _ __          |
-|    |  _  |/ _` |/ __| |/ / _ \ '__| '_ ` _ \ / _` | '_ \  \         |
-|    | | | | (_| | (__|   <  __/ |  | | | | | | (_| | | | |        |
-|    \_| |_/\__,_|\___|_|\_\___|_|  |_| |_| |_|\__,_|_| |_|        |
-|                                                                  |
-|   Domain\Username  :  $env:USERDOMAIN\$env:USERNAME                      |
-|   Hostname         :  $([System.Net.Dns]::GetHostEntry([string]$env:computername).HostName)                            |
-|   IPv4-Address     :  $ModernConsole_IPv4Address                             |
-|   PSVersion        :  "$($PSVersionTable.PSVersion.Major).$($PSVersionTable.PSVersion.Minor).$($PSVersionTable.PSVersion.Build).$($PSVersionTable.PSVersion.Revision)"                              |
-|   Date & Time      :  $(Get-Date -Format F)         |
-|                                                                  |
+           _.-'~~~~~~`-._
+          /      ||      \
+         /       ||       \
+        |        ||        |
+        | _______||_______ |
+        |/ ----- \/ ----- \|
+       /  (     )  (     )  \
+      / \  ----- () -----  / \
+     /   \      /||\      /   \
+    /     \    /||||\    /     \
+   /       \  /||||||\  /       \
+  /_        \o========o/        _\
+    `--...__|`-._  _.-'|__...--'
+            |    `'    |             
+
+   Domain\Username  :  $env:USERDOMAIN\$env:USERNAME              
+   Hostname         :  $([System.Net.Dns]::GetHostEntry([string]$env:computername).HostName)                            
+   IPv4-Address     :  $ModernConsole_IPv4Address                             
+   PSVersion        :  "$($PSVersionTable.PSVersion.Major).$($PSVersionTable.PSVersion.Minor).$($PSVersionTable.PSVersion.Build).$($PSVersionTable.PSVersion.Revision)"                              
+   Date & Time      :  $(Get-Date -Format F)         
+                                                                  
 +=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+
 
 "@
