@@ -82,5 +82,6 @@ $bytes = [System.Text.Encoding]::Unicode.GetBytes($ScriptBlock.tostring())
 $b64 = [System.Convert]::ToBase64String($bytes)
 # start terminal
 . wt 
-Start-Sleep -Seconds 30
-. "$env:ProgramFiles\Powershell\7\pwsh.exe" "-encodedcommand $b64"
+Start-Sleep -Seconds 10
+
+Start-Process -FilePath "$env:ProgramFiles\Powershell\7\pwsh.exe" -ArgumentList "-encodedcommand `"$b64`""
