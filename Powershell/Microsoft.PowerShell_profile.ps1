@@ -6,13 +6,6 @@ foreach ($ip in $ipaddress.AddressList) {
         break
     }
 }
-function explorer {
-    explorer.exe .
-}
-
-set-alias unzip expand-archive
-Set-Alias -Name firefox -Value "C:\Program Files\Mozilla Firefox\firefox.exe" -Description "Launches Firefox" -Force -ErrorAction SilentlyContinue
-Set-Alias -Name VSIE -Value "C:\Users\markp\OneDrive\LoginVSI\ScriptEditor\ScriptEditor.exe" -Description "Launches LoginVSI Script Editor" -Force
 
 $dets = @"
 
@@ -35,14 +28,43 @@ $dets = @"
    Domain\Username  :  $env:USERDOMAIN\$env:USERNAME              
    Hostname         :  $([System.Net.Dns]::GetHostEntry([string]$env:computername).HostName)                            
    IPv4-Address     :  $ModernConsole_IPv4Address                             
-   PSVersion        :  "$($PSVersionTable.PSVersion.Major).$($PSVersionTable.PSVersion.Minor).$($PSVersionTable.PSVersion.Build).$($PSVersionTable.PSVersion.Revision)"                              
+   PSVersion        :  $($PSVersionTable.PSVersion.ToString())                              
    Date & Time      :  $(Get-Date -Format F)         
                                                                   
 +=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+
 
 "@
+$global:ErrorCount = 0
+#Import-Module posh-git
+[ScriptBlock]$Prompt = {
+    $lastCommandFailed = ($global:error.Count -gt $global:ErrorCount) -or -not $?
+    if ($lastCommandFailed) {$env:ERROR="x"} else {$env:ERROR=""}
+    $global:ErrorCount = $global:error.Count
+    $realLASTEXITCODE = $global:LASTEXITCODE
+    if ($realLASTEXITCODE -isnot [int]) {
+        $realLASTEXITCODE = 0
+    }
+    $startInfo = New-Object System.Diagnostics.ProcessStartInfo
+    $startInfo.FileName = "$PSScriptRoot\oh-my-posh.exe"
+    $cleanPWD = $PWD.ProviderPath.TrimEnd("\")
+    $startInfo.Arguments = "-config=""$PSScriptRoot\henk.json"" -error=$realLASTEXITCODE -pwd=""$cleanPWD"""
+    $startInfo.Environment["TERM"] = "xterm-256color"
+    $startInfo.CreateNoWindow = $true
+    $startInfo.StandardOutputEncoding = [System.Text.Encoding]::UTF8
+    $startInfo.RedirectStandardOutput = $true
+    $startInfo.UseShellExecute = $false
+    if ($PWD.Provider.Name -eq 'FileSystem') {
+        $startInfo.WorkingDirectory = $PWD.ProviderPath
+    }
+    $process = New-Object System.Diagnostics.Process
+    $process.StartInfo = $startInfo
+    $process.Start() | Out-Null
+    $standardOut = $process.StandardOutput.ReadToEnd()
+    $process.WaitForExit()
+    $standardOut
+    $global:LASTEXITCODE = $realLASTEXITCODE
+    Remove-Variable realLASTEXITCODE -Confirm:$false
+}
+Set-Item -Path Function:prompt -Value $Prompt -Force
 
-Import-Module posh-git
-Import-Module oh-my-posh
-Set-Theme underwear
 write-host $dets -NoNewline

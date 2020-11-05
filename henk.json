@@ -1,0 +1,89 @@
+{
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "vertical_offset": 0,
+      "segments": [
+        {
+          "type": "time",
+          "style": "plain",
+          "foreground": "#FFFFFF",
+          "properties": {
+            "time_format": "[15:04:05]"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "style": "plain",
+          "properties": {
+            "postfix": " 🐵🔥"
+          }
+        },
+        {
+          "type": "root",
+          "properties": {
+            "root_icon": "⚡"
+          }
+        },
+        {
+          "type": "envvar",
+          "style": "plain",
+          "foreground": "#f1184c",
+          "properties": {
+            "var_name": "error"
+          }
+        },
+        {
+          "type": "session",
+          "style": "powerline",
+          "foreground": "#FFFFFF"
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#100e23",
+          "background": "#91ddff",
+          "properties": {
+            "home_icon": "\uF7DB",
+            "folder_icon": "\uF115",
+            "folder_separator_icon": " \uE0B1 ",
+            "style": "full"
+          }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#193549",
+          "background": "#95ffa4"
+        }
+      ]
+    },
+    {
+      "type": "newline"
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "properties": {
+            "prefix": "",
+            "text": "🚀❯"
+          }
+        }
+      ]
+    }
+  ],
+  "final_space": false
+}
