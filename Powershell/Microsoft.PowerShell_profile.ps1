@@ -38,7 +38,7 @@ $global:ErrorCount = 0
 #Import-Module posh-git
 [ScriptBlock]$Prompt = {
     $lastCommandFailed = ($global:error.Count -gt $global:ErrorCount) -or -not $?
-    if ($lastCommandFailed) {$env:ERROR="x"} else {$env:ERROR=""}
+    if ($lastCommandFailed) { $env:ERROR = [char]::ConvertFromUtf32(0x026d4) } else { $env:ERROR = "" }
     $global:ErrorCount = $global:error.Count
     $realLASTEXITCODE = $global:LASTEXITCODE
     if ($realLASTEXITCODE -isnot [int]) {

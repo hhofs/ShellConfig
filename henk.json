@@ -21,23 +21,14 @@
       "segments": [
         {
           "type": "os",
-          "style": "plain",
-          "properties": {
-            "postfix": " 🐵🔥"
-          }
+          "style": "plain"
         },
         {
-          "type": "root",
-          "properties": {
-            "root_icon": "⚡"
-          }
-        },
-        {
-          "type": "envvar",
+          "type": "text",
           "style": "plain",
-          "foreground": "#f1184c",
           "properties": {
-            "var_name": "error"
+            "prefix": "😷",
+            "text": ""
           }
         },
         {
@@ -64,6 +55,20 @@
           "powerline_symbol": "\uE0B0",
           "foreground": "#193549",
           "background": "#95ffa4"
+        },
+        {
+          "type": "root",
+          "properties": {
+            "root_icon": "🔥"
+          }
+        },
+        {
+          "type": "envvar",
+          "style": "plain",
+          "foreground": "#f1184c",
+          "properties": {
+            "var_name": "error"
+          }
         }
       ]
     },
@@ -73,17 +78,17 @@
     {
       "type": "prompt",
       "alignment": "left",
+      "horizontal_offset": -1,
       "segments": [
         {
           "type": "text",
           "style": "plain",
           "properties": {
-            "prefix": "",
             "text": "🚀❯"
           }
         }
       ]
     }
   ],
-  "final_space": false
+  "final_space": true
 }
