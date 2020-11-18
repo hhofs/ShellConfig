@@ -36,6 +36,8 @@ $dets = @"
 "@
 $global:ErrorCount = 0
 #Import-Module posh-git
+if ($env:TERM_PROGRAM -ne "vscode")
+{
 [ScriptBlock]$Prompt = {
     $lastCommandFailed = ($global:error.Count -gt $global:ErrorCount) -or -not $?
     if ($lastCommandFailed) { $env:ERROR = [char]::ConvertFromUtf32(0x026d4) } else { $env:ERROR = "" }
@@ -66,5 +68,5 @@ $global:ErrorCount = 0
     Remove-Variable realLASTEXITCODE -Confirm:$false
 }
 Set-Item -Path Function:prompt -Value $Prompt -Force
-
+}
 write-host $dets -NoNewline
