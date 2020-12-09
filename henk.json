@@ -58,6 +58,7 @@
         },
         {
           "type": "root",
+          "style": "plain",
           "properties": {
             "root_icon": "🔥"
           }
